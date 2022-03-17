@@ -1,0 +1,13 @@
+APPLICATION,PROFILE,LABEL,CONFIG_KEY,CONFIG_VALUE
+fusion-connector,default,master,server.port,8081
+fusion-connector,default,master,activemq.broker.url,127.0.0.1
+fusion-connector,default,master,activemq.broker.port,61616
+fusion-connector,default,master,spring.datasource.url,jdbc:mariadb://${database.host}:${database.port}/fusion_connector
+fusion-connector,default,master,spring.datasource.password,root
+fusion-connector,default,master,spring.datasource.username,root
+fusion-connector,default,master,database.host,localhost
+fusion-connector,default,master,database.port,3306
+fusion-connector,default,master,schedularName,FusionConnector
+fusion-connector,default,master,timer.period.in.ms,600000
+fusion-connector,local,master,timer.period.in.ms,60000
+fusion-connector,default,master,destination.URL,activemq:queue:ORDER_EVENT_FUSION_IN

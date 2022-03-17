@@ -1,0 +1,2 @@
+APPLICATION,PROFILE,LABEL,CONFIG_KEY,CONFIG_VALUE
+fusion-connect-resources,default,master,server.port,8082
