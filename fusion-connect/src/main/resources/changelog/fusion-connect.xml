@@ -39,23 +39,6 @@
     </changeSet>
 	
     <changeSet author="rzadpide"
-               id="load_fusion_connector_properties" runOnChange="true">
-        <delete tableName="app_properties">
-            <where>application='fusion-connector'</where>
-        </delete>
-
-        <loadData tableName="app_properties"
-                  file="src/main/resources/changelog/fusion-connector.csv">
-            <column name="application" type="STRING"/>
-            <column name="profile" type="STRING"/>
-            <column name="label" type="STRING"/>
-            <column name="config_key" type="STRING"/>
-            <column name="config_value" type="STRING"/>
-            <column name="description" type="STRING"/>
-        </loadData>
-    </changeSet>
-	
-    <changeSet author="rzadpide"
                id="load_fusion_connect_orchestrator_properties" runOnChange="true">
         <delete tableName="app_properties">
             <where>application='fusion-connect-orchestrator'</where>
