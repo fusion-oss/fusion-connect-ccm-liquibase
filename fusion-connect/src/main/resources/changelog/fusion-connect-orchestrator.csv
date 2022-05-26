@@ -17,17 +17,18 @@ fusion-connect-orchestrator,default,master,spring.datasource.timeBetweenEviction
 fusion-connect-orchestrator,default,master,spring.jpa.database-platform,org.hibernate.dialect.MariaDB103Dialect
 fusion-connect-orchestrator,default,master,spring.jpa.show-sql,true
 fusion-connect-orchestrator,default,master,spring.datasource.url,jdbc:mariadb:failover://${database.host}:${database.port}/fusion_connect?autoReconnect=true&createDatabaseIfNotExist=true
-fusion-connect-orchestrator,default,master,database.host,localhost
+fusion-connect-orchestrator,default,master,database.host,fusion-connect-mariadb
 fusion-connect-orchestrator,default,master,database.port,3306
 fusion-connect-orchestrator,default,master,spring.datasource.username,root
 fusion-connect-orchestrator,default,master,spring.datasource.password,root
+fusion-connect-orchestrator,default,master,db.type,Relational
 
 fusion-connect-orchestrator,default,master,spring.liquibase.enabled,true
 fusion-connect-orchestrator,default,master,logging.level.liquibase,INFO
 fusion-connect-orchestrator,default,master,spring.liquibase.change-log,classpath:changelog/changelog.xml
 
 fusion-connect-orchestrator,default,master,spring.activemq.broker-url,tcp://${activemq.broker.url}:${activemq.broker.port}
-fusion-connect-orchestrator,default,master,activemq.broker.url,127.0.0.1
+fusion-connect-orchestrator,default,master,activemq.broker.url,fusion-connect-activemq
 fusion-connect-orchestrator,default,master,activemq.broker.port,61616
 
 fusion-connect-orchestrator,default,master,management.health.cassandra.enabled,false
@@ -35,7 +36,7 @@ fusion-connect-orchestrator,default,master,fusion.dedupe.dbType,Relational
 fusion-connect-orchestrator,default,master,fusion.sourceTypes.activemq,async
 
 fusion-connect-orchestrator,default,master,fusion.resourceURL,http://${resource.hostname}:${resource.port}/resources?appName=${spring.application.name}
-fusion-connect-orchestrator,default,master,resource.hostname,localhost
+fusion-connect-orchestrator,default,master,resource.hostname,fusion-connect-resources
 fusion-connect-orchestrator,default,master,resource.port,8081
 
 fusion-connect-orchestrator,default,master,fusion.sources[0].name,SCOPERETAIL
