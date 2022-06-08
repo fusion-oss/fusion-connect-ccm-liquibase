@@ -27,9 +27,9 @@ fusion-connect-orchestrator,default,master,spring.liquibase.enabled,true
 fusion-connect-orchestrator,default,master,logging.level.liquibase,INFO
 fusion-connect-orchestrator,default,master,spring.liquibase.change-log,classpath:changelog/changelog.xml
 
-fusion-connect-orchestrator,default,master,spring.activemq.broker-url,tcp://${activemq.broker.url}:${activemq.broker.port}
-fusion-connect-orchestrator,default,master,activemq.broker.url,fusion-connect-activemq
-fusion-connect-orchestrator,default,master,activemq.broker.port,61616
+fusion-connect-orchestrator,default,master,fusion.brokers[0].jmsProvider,ACTIVEMQ
+fusion-connect-orchestrator,default,master,fusion.brokers[0].url,tcp://fusion-connect-activemq:61616
+fusion-connect-orchestrator,default,master,fusion.brokers[0].connectionFactoryName,activemq_cf1
 
 fusion-connect-orchestrator,default,master,management.health.cassandra.enabled,false
 fusion-connect-orchestrator,default,master,fusion.dedupe.dbType,Relational
@@ -40,8 +40,8 @@ fusion-connect-orchestrator,default,master,resource.hostname,fusion-connect-reso
 fusion-connect-orchestrator,default,master,resource.port,8081
 
 fusion-connect-orchestrator,default,master,fusion.sources[0].name,SCOPERETAIL
-fusion-connect-orchestrator,default,master,fusion.sources[0].uri,activemq:queue:ORDER_EVENT_FUSION_IN
-fusion-connect-orchestrator,default,master,fusion.sources[0].errorTargetUri,activemq:queue:ORDER_EVENT_FUSION_IN_ERROR
+fusion-connect-orchestrator,default,master,fusion.sources[0].uri,activemq:queue:ORDER_EVENT_FUSION_IN?connectionFactory=${fusion.brokers[0].connectionFactoryName}
+fusion-connect-orchestrator,default,master,fusion.sources[0].errorTargetUri,activemq:queue:ORDER_EVENT_FUSION_IN_ERROR?connectionFactory=${fusion.brokers[0].connectionFactoryName}
 
 fusion-connect-orchestrator,default,master,fusion.events[0].eventType,ORDER_CREATE
 fusion-connect-orchestrator,default,master,fusion.events[0].spec.source,SCOPERETAIL
@@ -49,4 +49,4 @@ fusion-connect-orchestrator,default,master,fusion.events[0].spec.format,json
 fusion-connect-orchestrator,default,master,fusion.events[0].spec.eventTypePath,eventType
 fusion-connect-orchestrator,default,master,fusion.events[0].headers.actions,"direct:validate,direct:dedupe,direct:transform"
 fusion-connect-orchestrator,default,master,fusion.events[0].headers.mandatoryHeaders,"eventType:String,correlationId:String,tenantId:String"
-fusion-connect-orchestrator,default,master,fusion.events[0].configSpec.default.targetUri,activemq:queue:ORDER_CREATE_FUSION_OUT
+fusion-connect-orchestrator,default,master,fusion.events[0].configSpec.default.targetUri,activemq:queue:ORDER_CREATE_FUSION_OUT?connectionFactory=${fusion.brokers[0].connectionFactoryName}
